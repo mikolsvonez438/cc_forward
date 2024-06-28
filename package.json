@@ -1,11 +1,9 @@
 {
   "name": "cc_forward",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "build": "npm run compile && npm run other-task"
+    "start": "node app.$"
   },
   "author": "",
   "license": "ISC",

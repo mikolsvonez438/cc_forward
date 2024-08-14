@@ -16,6 +16,17 @@ app.get('/check', async (req, res) => {
     }
 });
 
+app.get('/checkcc', async (req, res) => {
+    const { binValue } = req.query;
+    try {
+        const response = await axios.get(`https://binlist.io/lookup/${binValue}`);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Server error');
+    }
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
     console.log(`Proxy server running on port ${PORT}`);

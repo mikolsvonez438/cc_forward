@@ -27,6 +27,7 @@ app.get('/checkcc', async (req, res) => {
     }
 });
 
+
 app.get('/generatecalm', (req, res) => {
 
     // function generateRandomString(length) {
@@ -69,12 +70,36 @@ app.get('/generatecalm', (req, res) => {
         'sec-fetch-site': 'same-origin',
         'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
         'x-client-timezone': 'Asia/Shanghai',
-        'x-device-id': 'c7da10a3-87cd-4e43-8f67-06961955dbc3',
+        'x-device-id': 'a8f1dd79-5eb8-4a59-8463-61914446211d',
         'x-device-platform': 'www',
         'x-device-version': '1.3',
-        'x-www-req-from': 'https://www.calm.com/novotel'
+        'x-www-req-from': 'https://www.calm.com/novotel',
+        'access-control-allow-credentials': 'true',
+        'access-control-allow-origin': 'https://www.calm.com',
+        'alt-svc': 'h3=":443"; ma=86400',
+        'cache-control': 'max-age=600',
+        'content-length': '432',
+        'content-security-policy': 'frame-ancestors \'self\' teams.microsoft.com *.teams.microsoft.com teams.cloud.microsoft *.skype.com',
+        'date': 'Tue, 20 Aug 2024 08:16:30 GMT',
+        'referrer-policy': 'strict-origin-when-cross-origin',
+        'server': 'istio-envoy',
+        'strict-transport-security': 'max-age=31535999',
+        'vary': 'Origin, Accept-Encoding',
+        'via': '1.1 a7cc1d4538d5c3a4d8d572fbc8e0b6fe.cloudfront.net (CloudFront)',
+        'x-amz-cf-id': 'QFbEcn1hMZNK5EngebO_5b_MjVH3A9-2HKAZs5dks0SJwUDKWGdBYA==',
+        'x-amz-cf-pop': 'SIN2-P6',
+        'x-cache': 'Miss from cloudfront',
+        'x-calm-identifier': '35e7e2a3-5a1e-4fb8-8253-0bd63c4e2dc4',
+        'x-calm-request-id': '79qermRTfx',
+        'x-content-type-options': 'nosniff',
+        'x-envoy-upstream-service-time': '509',
+        'x-frame-options': 'SAMEORIGIN',
+        'x-ratelimit-limit': '10',
+        'x-ratelimit-remaining': '9',
+        'x-ratelimit-reset': '1724141821',
+        'x-xss-protection': '1; mode=block'
     };
-   axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
+    axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
         .then(response => {
             const token = response.data.token;
             const identifiyer = response.data.calm_identifier
@@ -95,11 +120,11 @@ app.get('/generatecalm', (req, res) => {
                 'x-www-req-from': 'https://www.calm.com/novotel'
             };
 
-            axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, {"partner":"Novotel","duration":1000000}, { headers: applyHeaders })
+            axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, { "partner": "Novotel", "duration": 100000 }, { headers: applyHeaders })
                 .then(applyResponse => {
-                  if(applyResponse.data){
+                    if (applyResponse.data) {
                         res.send(randomEmail)
-                    }else{
+                    } else {
                         res.send[{}]
                     }
                 })
@@ -112,6 +137,7 @@ app.get('/generatecalm', (req, res) => {
             res.status(500).send('An error occurred');
         });
 });
+
 
 
 const PORT = 3000;

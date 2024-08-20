@@ -76,9 +76,10 @@ app.get('/generatecalm', (req, res) => {
     };
     // res.send(payload);
     axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
-        .then(response => {
+         .then(response => {
             // Handle the response
-            res.send(response.data);
+            console.log(response.data)
+            res.send(payload);
         })
         .catch(error => {
             // Handle any errors

@@ -40,7 +40,7 @@ app.get('/generatecalm', (req, res) => {
         randomUsernamerandomEmailresult += characters.charAt(Math.floor(Math.random() * characters.length));
     }
     // }
-    const randomEmail = `${randomEmailresult}@hulogng.juice`;
+    const randomEmail = `${randomEmailresult}@gmail.com`;
     const randomUsername = randomUsernamerandomEmailresult;
 
     const payload = {

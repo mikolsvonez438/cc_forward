@@ -74,10 +74,10 @@ app.get('/generatecalm', (req, res) => {
         'x-device-version': '1.3',
         'x-www-req-from': 'https://www.calm.com/novotel'
     };
-    axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
+   axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
         .then(response => {
-            const token = response.data.token; // Get the token from the response data
-
+            const token = response.data.token;
+            const identifiyer = response.data.calm_identifier
             const applyHeaders = {
                 'accept': 'application/json, text/plain, */*',
                 'content-type': 'application/json',
@@ -86,7 +86,7 @@ app.get('/generatecalm', (req, res) => {
                 'sec-ch-ua-mobile': '?0',
                 'sec-ch-ua-platform': '"Windows"',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36',
-                'x-calm-identifier': 'b899a5d0-51a2-48c4-b848-ee991dfb58d8',
+                'x-calm-identifier': identifiyer,
                 'x-client-timezone': 'Asia/Shanghai',
                 'x-device-id': 'a8f1dd79-5eb8-4a59-8463-61914446211d',
                 'x-device-platform': 'www',
@@ -98,12 +98,9 @@ app.get('/generatecalm', (req, res) => {
             axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, {"partner":"Novotel","duration":60}, { headers: applyHeaders })
                 .then(applyResponse => {
                     res.send(applyResponse)
-                    // console.log(applyResponse.data);
-                    // Handle the response from the gift/apply endpoint
                 })
                 .catch(applyError => {
                     console.error(applyError);
-                    // Handle any errors that occurred during the gift/apply request
                 });
         })
         .catch(error => {

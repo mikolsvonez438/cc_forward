@@ -28,16 +28,15 @@ app.get('/checkcc', async (req, res) => {
 });
 
 app.get('/generatecalm', (req, res) => {
-function generateRandomString(length) {
-   function generateRandomString(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
+
+    function generateRandomString(length) {
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        let result = '';
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return result;
     }
-    return result;
-  }
-}
     const randomEmail = `${generateRandomString(8)}@gmail.com`;
     const randomUsername = generateRandomString(10);
 
@@ -72,8 +71,7 @@ function generateRandomString(length) {
         'x-device-version': '1.3',
         'x-www-req-from': 'https://www.calm.com/novotel'
     };
-
-  res.send(payload);
+    res.send(payload);
     // axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
     //     .then(response => {
     //         // Handle the response
@@ -85,7 +83,6 @@ function generateRandomString(length) {
     //         res.status(500).send('An error occurred');
     //     });
 });
-
 
 
 const PORT = 3000;

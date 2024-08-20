@@ -29,16 +29,19 @@ app.get('/checkcc', async (req, res) => {
 
 app.get('/generatecalm', (req, res) => {
 
-    function generateRandomString(length) {
+       // function generateRandomString(length) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        let result = '';
-        for (let i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * characters.length));
+        let randomEmailresult = '';
+        let randomUsernamerandomEmailresult = '';
+        for (let i = 0; i < 8; i++) {
+            randomEmailresult += characters.charAt(Math.floor(Math.random() * characters.length));
         }
-        return result;
-    }
-    const randomEmail = `${generateRandomString(8)}@gmail.com`;
-    const randomUsername = generateRandomString(10);
+        for (let i = 0; i < 10; i++) {
+            randomUsernamerandomEmailresult += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+    // }
+    const randomEmail = `${randomEmailresult}@gmail.com`;
+    const randomUsername = randomUsernamerandomEmailresult;
 
     const payload = {
         is_college: false,

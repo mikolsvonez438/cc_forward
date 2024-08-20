@@ -28,7 +28,16 @@ app.get('/checkcc', async (req, res) => {
 });
 
 app.get('/generatecalm', (req, res) => {
-
+function generateRandomString(length) {
+   function generateRandomString(length) {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  }
+}
     const randomEmail = `${generateRandomString(8)}@gmail.com`;
     const randomUsername = generateRandomString(10);
 
@@ -77,16 +86,7 @@ app.get('/generatecalm', (req, res) => {
     //     });
 });
 
-function generateRandomString(length) {
-   function generateRandomString(length) {
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  }
-}
+
 
 const PORT = 3000;
 app.listen(PORT, () => {

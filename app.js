@@ -97,7 +97,11 @@ app.get('/generatecalm', (req, res) => {
 
             axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, {"partner":"Novotel","duration":60}, { headers: applyHeaders })
                 .then(applyResponse => {
-                    res.send(applyResponse.data)
+                  if(applyResponse.data){
+                        res.send(randomEmail)
+                    }else{
+                        res.send[{}]
+                    }
                 })
                 .catch(applyError => {
                     console.error(applyError);

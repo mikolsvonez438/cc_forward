@@ -95,7 +95,7 @@ app.get('/generatecalm', (req, res) => {
                 'x-www-req-from': 'https://www.calm.com/novotel'
             };
 
-            axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, null, { headers: applyHeaders })
+            axios.post(`https://www.calm.com/webapi/authproxy/gift/apply`, {"partner":"Novotel","duration":60}, { headers: applyHeaders })
                 .then(applyResponse => {
                     res.send(applyResponse)
                     // console.log(applyResponse.data);

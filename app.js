@@ -74,17 +74,17 @@ app.get('/generatecalm', (req, res) => {
         'x-device-version': '1.3',
         'x-www-req-from': 'https://www.calm.com/novotel'
     };
-    res.send(payload);
-    // axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
-    //     .then(response => {
-    //         // Handle the response
-    //         res.send(response.data);
-    //     })
-    //     .catch(error => {
-    //         // Handle any errors
-    //         console.error(error);
-    //         res.status(500).send('An error occurred');
-    //     });
+    // res.send(payload);
+    axios.post(`https://www.calm.com/webapi/authproxy/signup`, payload, { headers })
+        .then(response => {
+            // Handle the response
+            res.send(response.data);
+        })
+        .catch(error => {
+            // Handle any errors
+            console.error(error);
+            res.status(500).send('An error occurred');
+        });
 });
 
 

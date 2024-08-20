@@ -27,7 +27,7 @@ app.get('/checkcc', async (req, res) => {
     }
 });
 
-app.post('/generatecalm', (req, res) => {
+app.get('/generatecalm', (req, res) => {
 
     const randomEmail = `${generateRandomString(8)}@gmail.com`;
     const randomUsername = generateRandomString(10);

@@ -27,6 +27,25 @@ app.get('/checkcc', async (req, res) => {
     }
 });
 
+app.get('/checkccs', async (req, res) => {
+    const { bins } = req.query;
+    try {
+        if (!Array.isArray(bins)) {
+            return res.status(400).send('Invalid input. Please provide an array of bins.');
+        }
+
+        const requests = bins.map(binValue => axios.get(`https://binlist.io/lookup/${binValue}`));
+        const responses = await Promise.all(requests);
+        const results = responses.map(response => response.data);
+
+        res.json(results);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Server error');
+    }
+});
+
+
 
 app.get('/shortme', async (req, res) => {
     const { url } = req.query;

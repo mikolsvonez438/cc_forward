@@ -138,6 +138,23 @@ app.get('/generatecalm', (req, res) => {
         });
 });
 
+app.get('/shortme', async (req, res) => {
+    const { url } = req.query;
+     // Regular expression to validate the URL without requiring the protocol
+  const urlRegex = /^(?:http(s)?:\/\/)?[a-zA-Z0-9][-a-zA-Z0-9]*\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?(?:\/?.*)$/;
+
+  // Check if the URL matches the regular expression
+  if (!urlRegex.test(url)) {
+    return res.status(400).send('Invalid URL');
+  }
+    try {
+        const response = await axios.get(`https://tinyurl.com/api-create.php?url=${encodeURIComponent(url)}`);
+        res.json(response.data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Server error');
+    }
+});
 
 
 const PORT = 3000;

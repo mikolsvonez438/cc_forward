@@ -160,7 +160,7 @@ app.get('/verifyme', async (req, res) => {
     const { email } = req.query;
      
     try {
-        const response = await axios.get(`https://verifymail.io/api/{email}?key=388353020d35419692677341e3046106`);
+        const response = await axios.get(`https://verifymail.io/api/${email}?key=388353020d35419692677341e3046106`);
         res.json(response.data);
     } catch (error) {
         console.error('Error fetching data:', error);

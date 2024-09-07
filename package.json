@@ -1,13 +1,16 @@
 {
   "name": "cc_forward",
   "version": "1.0.0",
-  "main": "app.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.$"
+    "start": "node app.js",
+    "build": "npm run compile && npm run other-task"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sergdudko/stripe-js": "^1.2.8",
     "axios": "^1.7.2",
     "cors": "^2.8.5",
     "express": "^4.19.2"

@@ -2,13 +2,8 @@ const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
 const app = express();
-const { loadStripe } = require("@sergdudko/stripe-js");
 app.use(cors());
 
-app.get('/teststripe', async (req, res) => {
-    const stripe = await loadStripe("pi_3PwGU9F6KbQh44q10EuDUs92_secret_gNSviAhCchmkSgVLmtWInwWOV", "pm_1PwGU7F6KbQh44q1QVkZaVMy", "https://suschegg.com/dashboard?msg=Payment Successful&status=success");
-    res.send(stripe);
-})
 app.get('/check', async (req, res) => {
     const { cc } = req.query;
     try {
